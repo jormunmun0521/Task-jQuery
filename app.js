@@ -45,10 +45,11 @@ const fortuneResults = {
 
 
 
-
-
-
 $(".js-fortune-start").click( function() {
+  if ($('.start-button').text() === 'もう一度占う！'){
+    $('.result').hide();
+    $('.start-button').text('運勢を占う！');
+  } else {
   for (let i in fortuneResults) {
     const Num = Math.floor( Math.random() * 3 );
 
@@ -61,17 +62,36 @@ $(".js-fortune-start").click( function() {
     $(elements).find('.detail').text(Detail);
     
   }
-  
+  $('.start-button').text('もう一度占う！');
+  $('.result').fadeIn(500);
 
-  if ($('.start-button').text() === '運勢を占う！'){
-    $('.start-button').text('もう一度占う！');
-    $('.result').fadeIn(500);
-  } else {
-    $('.start-button').text('運勢を占う！');
-    $('.result').hide();
-  }
+  } 
 })
 
+
+
+// $(".js-fortune-start").click( function() {
+//   if ($('.start-button').text() === '運勢を占う！'){
+//   for (let i in fortuneResults) {
+//     const Num = Math.floor( Math.random() * 3 );
+
+//     const Stars = fortuneResults[i][Num]['stars'];
+//     const Detail = fortuneResults[i][Num]['detail'];
+  
+//     const elements = '.' + i;
+
+//     $(elements).find('.stars').text(Stars);
+//     $(elements).find('.detail').text(Detail);
+    
+//   }
+//   $('.start-button').text('もう一度占う！');
+//   $('.result').fadeIn(500);
+
+ 
+// } else {
+//   $('.start-button').text('運勢を占う！');
+//   $('.result').hide();
+// } })
   
 
 
